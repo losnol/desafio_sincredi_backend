@@ -1,13 +1,13 @@
-package com.example.demo
+package br.desafio.sincredi.application
 
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 
 @SpringBootApplication
-class DemoApplication {
+class Application {
 
 	static void main(String[] args) {
-		SpringApplication.run(DemoApplication, args)
+		SpringApplication.run(Application, args)
 	}
 
 }
