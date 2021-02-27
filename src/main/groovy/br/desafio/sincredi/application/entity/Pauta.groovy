@@ -4,16 +4,16 @@ import br.desafio.sincredi.application.utils.enums.StatusPauta
 import groovy.transform.CompileStatic
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
+import org.hibernate.envers.Audited
 
 import java.time.LocalDateTime
 
 @CompileStatic
 @EqualsAndHashCode(includes = 'id')
 @ToString(includeFields = true, includeNames = true, includePackage = false)
-@ToString
-class Pauta {
+@Audited
+class Pauta extends BaseEntity {
 
-   String id
    LocalDateTime dataInscricao
    Long duracao
    LocalDateTime inicio
