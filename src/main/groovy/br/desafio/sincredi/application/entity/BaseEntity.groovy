@@ -15,13 +15,13 @@ import java.time.LocalDateTime
 @CompileStatic
 @EqualsAndHashCode(includes = 'id')
 @ToString(includeFields = true, includeNames = true, includePackage = false)
-@ToString
 @MappedSuperclass
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 abstract class BaseEntity {
 
    @Id
    @GeneratedValue
+   @Column(name = "id")
    UUID id
 
    @Column(updatable = false)
