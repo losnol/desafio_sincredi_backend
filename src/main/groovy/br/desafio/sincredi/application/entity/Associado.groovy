@@ -6,13 +6,15 @@ import groovy.transform.ToString
 import org.hibernate.envers.Audited
 
 import javax.persistence.Column
+import javax.persistence.Entity
 import java.time.LocalDate
 
 @CompileStatic
-@EqualsAndHashCode(includes = 'id')
+@EqualsAndHashCode(excludes = ['nome', 'dataNascimento', 'cpf'], callSuper = true)
 @ToString(includeFields = true, includeNames = true, includePackage = false)
 @Audited
-class Associado {
+@Entity
+class Associado extends BaseEntity {
 
    @Column(nullable = false)
    String nome

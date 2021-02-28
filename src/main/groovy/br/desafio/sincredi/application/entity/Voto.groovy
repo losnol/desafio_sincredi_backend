@@ -9,10 +9,10 @@ import javax.persistence.Column
 import javax.persistence.ManyToOne
 
 @CompileStatic
-@EqualsAndHashCode(includes = 'id')
+@EqualsAndHashCode(excludes = ['aFavor', 'associado'], callSuper = true)
 @ToString(includeFields = true, includeNames = true, includePackage = false)
 @Audited
-class Voto {
+class Voto extends BaseEntity {
 
    @Column
    Boolean aFavor
