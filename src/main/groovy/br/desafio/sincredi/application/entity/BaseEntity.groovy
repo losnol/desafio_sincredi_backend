@@ -21,7 +21,7 @@ abstract class BaseEntity {
 
    @Id
    @GeneratedValue
-   @Column(name = "id")
+   @Column(name = 'id')
    UUID id
 
    @Column(updatable = false)
