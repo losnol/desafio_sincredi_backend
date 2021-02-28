@@ -19,14 +19,8 @@ class PautaService {
       this.repository = repository
    }
 
-   def create() {
-      def pauta = new Pauta(dataInscricao: LocalDateTime.now(), status: StatusSessao.AGUARDANDO)
-      this.repository.save(pauta)
-   }
-
-   def create(DuracaoPautaTO duracao) {
-      def d = Duration.ZERO.plusSeconds(duracao.segundos).plusMinutes(duracao.minutos).plusHours(duracao.horas)
-      def pauta = new Pauta(dataInscricao: LocalDateTime.now(), status: StatusSessao.AGUARDANDO, duracao: d)
+   def create(String nomePauta) {
+      def pauta = new Pauta(dataInscricao: LocalDateTime.now(), nomePauta: nomePauta)
       this.repository.save(pauta)
    }
 
