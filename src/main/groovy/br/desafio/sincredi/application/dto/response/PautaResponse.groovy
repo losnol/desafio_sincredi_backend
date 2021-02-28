@@ -17,6 +17,7 @@ class PautaResponse {
    String nomePauta
    LocalDateTime dataInscricao
    ResultadoPauta resultado
+   Boolean ativa
 
 }
 

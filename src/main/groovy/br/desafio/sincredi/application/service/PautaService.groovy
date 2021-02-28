@@ -17,7 +17,7 @@ class PautaService {
    }
 
    def create(String nomePauta) {
-      def pauta = new Pauta(dataInscricao: LocalDateTime.now(), nomePauta: nomePauta)
+      def pauta = new Pauta(dataInscricao: LocalDateTime.now(), nomePauta: nomePauta, excluida: false)
       this.repository.save(pauta)
    }
 
@@ -37,6 +37,10 @@ class PautaService {
    def delete(String id) {
       def pauta = this.repository.findById(UUID.fromString(id)).get()
       this.repository.delete(pauta)
+   }
+
+   def getDeleted(){
+      this.repository.findDeleted()
    }
 
 }
