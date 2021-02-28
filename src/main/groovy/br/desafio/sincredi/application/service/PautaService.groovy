@@ -4,7 +4,7 @@ import br.desafio.sincredi.application.dto.to.DuracaoPautaTO
 import br.desafio.sincredi.application.entity.Pauta
 import br.desafio.sincredi.application.repository.jpa.PautaRepository
 import br.desafio.sincredi.application.utils.enums.ResultadoPauta
-import br.desafio.sincredi.application.utils.enums.StatusPauta
+import br.desafio.sincredi.application.utils.enums.StatusSessao
 import org.springframework.stereotype.Service
 
 import java.time.Duration
@@ -20,13 +20,13 @@ class PautaService {
    }
 
    def create() {
-      def pauta = new Pauta(dataInscricao: LocalDateTime.now(), status: StatusPauta.AGUARDANDO)
+      def pauta = new Pauta(dataInscricao: LocalDateTime.now(), status: StatusSessao.AGUARDANDO)
       this.repository.save(pauta)
    }
 
    def create(DuracaoPautaTO duracao) {
       def d = Duration.ZERO.plusSeconds(duracao.segundos).plusMinutes(duracao.minutos).plusHours(duracao.horas)
-      def pauta = new Pauta(dataInscricao: LocalDateTime.now(), status: StatusPauta.AGUARDANDO, duracao: d)
+      def pauta = new Pauta(dataInscricao: LocalDateTime.now(), status: StatusSessao.AGUARDANDO, duracao: d)
       this.repository.save(pauta)
    }
 

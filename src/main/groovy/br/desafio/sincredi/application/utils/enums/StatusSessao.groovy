@@ -3,8 +3,8 @@ package br.desafio.sincredi.application.utils.enums
 import groovy.transform.CompileStatic
 
 @CompileStatic
-enum StatusPauta {
+enum StatusSessao {
 
-   AGUARDANDO, EM_ANDAMENTO, FINALIZADA
+   AGUARDANDO, ABERTA, FINALIZADA
 
 }

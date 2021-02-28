@@ -14,13 +14,13 @@ import java.time.LocalDate
 @Audited
 class Associado {
 
-   @Column
+   @Column(nullable = false)
    String nome
 
-   @Column
+   @Column(nullable = false)
    LocalDate dataNascimento
 
-   @Column(unique = true)
+   @Column(unique = true, nullable = false, length = 11)
    String cpf
 
 }
