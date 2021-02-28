@@ -8,17 +8,17 @@ import org.hibernate.envers.Audited
 
 import javax.persistence.*
 import java.time.Duration
-import java.time.LocalDate
 import java.time.LocalDateTime
 
 @CompileStatic
 @EqualsAndHashCode(excludes = ['inicio', 'pauta', 'duracao', 'votos', 'status'], callSuper = true)
 @ToString(includeFields = true, includeNames = true, includePackage = false)
 @Audited
+@Entity
 class Sessao extends BaseEntity {
 
    @MapsId
-   @OneToOne(mappedBy = 'id')
+   @OneToOne(mappedBy = 'sessao')
    @JoinColumn(name = 'id')
    Pauta pauta
 
@@ -30,9 +30,9 @@ class Sessao extends BaseEntity {
 
    @Column
    @OneToMany
-   Set<Voto> votos
+   Set<Voto> votos = new HashSet<>()
 
-   @Column
+   @Column(nullable = false)
    StatusSessao status
 
 }

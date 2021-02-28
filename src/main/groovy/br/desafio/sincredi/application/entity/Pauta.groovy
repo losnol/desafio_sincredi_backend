@@ -1,13 +1,11 @@
 package br.desafio.sincredi.application.entity
 
-
 import groovy.transform.CompileStatic
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
 import org.hibernate.envers.Audited
 
-import javax.persistence.Column
-import javax.persistence.Entity
+import javax.persistence.*
 import java.time.LocalDateTime
 
 @CompileStatic
@@ -25,5 +23,9 @@ class Pauta extends BaseEntity {
 
    @Column
    Boolean aprovada
+
+   @OneToOne(cascade = CascadeType.ALL)
+   @PrimaryKeyJoinColumn
+   Sessao sessao
 
 }
