@@ -47,4 +47,11 @@ class PautaRestController {
       }.collect(Collectors.toList())
    }
 
+   @GetMapping(path = "/excluidas/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+   def getDeleted() {
+      this.service.getDeleted().stream().map {
+         PautaMapper.toResponse(it)
+      }.collect(Collectors.toList())
+   }
+
 }
