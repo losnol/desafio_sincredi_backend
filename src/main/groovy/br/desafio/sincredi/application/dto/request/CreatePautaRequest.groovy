@@ -10,6 +10,6 @@ import groovy.transform.ToString
 @ToString(includeFields = true, includeNames = true, includePackage = false)
 class CreatePautaRequest {
 
-   DuracaoPautaTO duracao
+   String nomePauta
 
 }

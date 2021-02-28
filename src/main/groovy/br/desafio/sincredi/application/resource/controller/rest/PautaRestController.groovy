@@ -17,9 +17,7 @@ class PautaRestController {
 
    @PostMapping(path = "/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
    def criarPauta(@RequestBody CreatePautaRequest req) {
-      if (req.duracao)
-         return this.service.create(req.duracao)
-      this.service.create()
+         return this.service.create(req.nomePauta)
    }
 
    @GetMapping(path = "/obter-resultado/{id}")

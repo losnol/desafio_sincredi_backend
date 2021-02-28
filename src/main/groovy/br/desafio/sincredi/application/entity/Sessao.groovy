@@ -12,7 +12,7 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 
 @CompileStatic
-@EqualsAndHashCode(includes = 'id')
+@EqualsAndHashCode(excludes = ['inicio', 'pauta', 'duracao', 'votos', 'status'], callSuper = true)
 @ToString(includeFields = true, includeNames = true, includePackage = false)
 @Audited
 class Sessao extends BaseEntity {
