@@ -13,7 +13,7 @@ import java.time.LocalDateTime
 @ToString(includeFields = true, includeNames = true, includePackage = false)
 @Audited
 @Entity
-class Pauta extends BaseEntity {
+class Pauta extends SoftDeletableEntity {
 
    @Column
    String nomePauta

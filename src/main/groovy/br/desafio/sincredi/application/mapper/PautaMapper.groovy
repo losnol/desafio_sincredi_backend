@@ -12,7 +12,7 @@ final class PautaMapper {
 
    static PautaResponse toResponse(Pauta pauta) {
       new PautaResponse(id: pauta.id.toString(), nomePauta: pauta.nomePauta, dataInscricao: pauta.dataInscricao,
-            resultado: convertResultadoFromEntity(pauta))
+            resultado: convertResultadoFromEntity(pauta), ativa: !pauta.excluida)
    }
 
 
