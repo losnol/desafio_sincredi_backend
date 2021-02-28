@@ -6,6 +6,8 @@ import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
 import org.hibernate.envers.Audited
 
+import java.time.Duration
+import java.time.Instant
 import java.time.LocalDateTime
 
 @CompileStatic
@@ -15,7 +17,7 @@ import java.time.LocalDateTime
 class Pauta extends BaseEntity {
 
    LocalDateTime dataInscricao
-   Long duracao
+   Duration duracao
    LocalDateTime inicio
    Boolean aprovada
    StatusPauta status
