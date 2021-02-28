@@ -1,5 +1,6 @@
 package br.desafio.sincredi.application.entity
 
+import com.fasterxml.jackson.annotation.JsonManagedReference
 import groovy.transform.CompileStatic
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
@@ -25,6 +26,7 @@ class Pauta extends SoftDeletableEntity {
    Boolean aprovada
 
    @OneToOne(cascade = CascadeType.ALL)
+   @JsonManagedReference
    @PrimaryKeyJoinColumn
    Sessao sessao
 

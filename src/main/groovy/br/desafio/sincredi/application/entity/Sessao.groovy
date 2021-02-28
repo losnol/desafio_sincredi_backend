@@ -1,6 +1,7 @@
 package br.desafio.sincredi.application.entity
 
 import br.desafio.sincredi.application.utils.enums.StatusSessao
+import com.fasterxml.jackson.annotation.JsonBackReference
 import groovy.transform.CompileStatic
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
@@ -20,6 +21,7 @@ class Sessao extends BaseEntity {
    @MapsId
    @OneToOne(mappedBy = 'sessao')
    @JoinColumn(name = 'id')
+   @JsonBackReference
    Pauta pauta
 
    @Column
