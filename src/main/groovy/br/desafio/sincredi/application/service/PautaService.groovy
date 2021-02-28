@@ -1,13 +1,10 @@
 package br.desafio.sincredi.application.service
 
-import br.desafio.sincredi.application.dto.to.DuracaoPautaTO
 import br.desafio.sincredi.application.entity.Pauta
+import br.desafio.sincredi.application.mapper.PautaMapper
 import br.desafio.sincredi.application.repository.jpa.PautaRepository
-import br.desafio.sincredi.application.utils.enums.ResultadoPauta
-import br.desafio.sincredi.application.utils.enums.StatusSessao
 import org.springframework.stereotype.Service
 
-import java.time.Duration
 import java.time.LocalDateTime
 
 @Service
@@ -24,9 +21,22 @@ class PautaService {
       this.repository.save(pauta)
    }
 
-   def resultado(String pautaId){
-      def pauta = this.repository.getOne(UUID.fromString(pautaId))
-      pauta.aprovada ? ResultadoPauta.APROVADA : ResultadoPauta.REJEITADA
+   def getResultado(String id) {
+      def pauta = this.repository.getOne(UUID.fromString(id))
+      PautaMapper.convertResultadoFromEntity(pauta)
+   }
+
+   def get(String id) {
+      this.repository.findById(UUID.fromString(id))
+   }
+
+   def getAll() {
+      this.repository.findAll()
+   }
+
+   def delete(String id) {
+      def pauta = this.repository.findById(UUID.fromString(id)).get()
+      this.repository.delete(pauta)
    }
 
 }
