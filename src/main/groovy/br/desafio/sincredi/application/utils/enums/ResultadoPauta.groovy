@@ -5,6 +5,6 @@ import groovy.transform.CompileStatic
 @CompileStatic
 enum ResultadoPauta {
 
-   APROVADA, REJEITADA
+   APROVADA, REJEITADA, AGUARDANDO_VOTACAO
 
 }
