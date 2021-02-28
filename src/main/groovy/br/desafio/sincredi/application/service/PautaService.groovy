@@ -1,10 +1,8 @@
 package br.desafio.sincredi.application.service
 
-
 import br.desafio.sincredi.application.entity.Pauta
 import br.desafio.sincredi.application.mapper.PautaMapper
 import br.desafio.sincredi.application.repository.jpa.PautaRepository
-import br.desafio.sincredi.application.utils.enums.ResultadoPauta
 import org.springframework.stereotype.Service
 
 import java.time.LocalDateTime
@@ -32,5 +30,13 @@ class PautaService {
       this.repository.findById(UUID.fromString(id))
    }
 
+   def getAll() {
+      this.repository.findAll()
+   }
+
+   def delete(String id) {
+      def pauta = this.repository.findById(UUID.fromString(id)).get()
+      this.repository.delete(pauta)
+   }
 
 }
