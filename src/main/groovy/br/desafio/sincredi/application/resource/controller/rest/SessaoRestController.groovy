@@ -22,7 +22,7 @@ class SessaoRestController {
       SessaoMapper.toResponse(this.service.create(req.pautaId, req.duracao))
    }
 
-   @GetMapping(path = "/{pauta_id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+   @GetMapping(path = "/{pauta_id}", produces = MediaType.APPLICATION_JSON_VALUE)
    def get(@PathVariable("pauta_id") String pautaId) {
       SessaoMapper.toResponse(this.service.find(pautaId))
    }

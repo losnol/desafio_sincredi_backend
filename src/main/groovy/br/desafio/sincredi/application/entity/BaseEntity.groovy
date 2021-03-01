@@ -5,7 +5,6 @@ import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
 import org.hibernate.annotations.CreationTimestamp
 import org.hibernate.annotations.UpdateTimestamp
-import org.hibernate.envers.Audited
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
 
@@ -15,8 +14,7 @@ import java.time.LocalDateTime
 @CompileStatic
 @EqualsAndHashCode(includes = 'id')
 @ToString(includeFields = true, includeNames = true, includePackage = false)
-@MappedSuperclass
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@MappedSuperclass()
 abstract class BaseEntity {
 
    @Id

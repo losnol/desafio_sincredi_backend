@@ -22,4 +22,7 @@ class Voto extends BaseEntity {
    @ManyToOne
    Associado associado
 
+   @ManyToOne(optional = false)
+   Sessao sessao
+
 }
