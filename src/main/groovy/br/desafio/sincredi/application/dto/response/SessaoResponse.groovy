@@ -1,6 +1,7 @@
 package br.desafio.sincredi.application.dto.response
 
 import br.desafio.sincredi.application.dto.to.DuracaoPautaTO
+import br.desafio.sincredi.application.dto.to.VotoTO
 import br.desafio.sincredi.application.utils.enums.StatusSessao
 import groovy.transform.CompileStatic
 import groovy.transform.EqualsAndHashCode
@@ -13,7 +14,7 @@ class SessaoResponse {
 
    PautaResponse pauta
    DuracaoPautaTO duracao
-   Set<String> votos
+   Set<VotoTO> votos
    StatusSessao status
 
 }

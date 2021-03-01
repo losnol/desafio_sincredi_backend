@@ -31,7 +31,7 @@ class Sessao extends BaseEntity {
    Duration duracao
 
    @Column
-   @OneToMany
+   @OneToMany(mappedBy = 'sessao')
    Set<Voto> votos = new HashSet<>()
 
    @Column(nullable = false)
