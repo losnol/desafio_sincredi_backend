@@ -8,6 +8,8 @@ import br.desafio.sincredi.application.utils.enums.StatusSessao
 import org.springframework.stereotype.Service
 
 import java.time.Duration
+import java.time.LocalDateTime
+import java.util.concurrent.CompletableFuture
 
 @Service
 class SessaoService {
@@ -23,7 +25,7 @@ class SessaoService {
    def create(String pautaId, DuracaoPautaTO duracaoTO) {
       def pauta = this.pautaService.get(pautaId).get()
       def duracao = Duration.ZERO
-      if(!duracaoTO || (!duracaoTO.segundos && !duracaoTO.minutos && !duracaoTO.horas))
+      if (!duracaoTO || (!duracaoTO.segundos && !duracaoTO.minutos && !duracaoTO.horas))
          duracao = duracao.plusMinutes(1)
       else
          duracao = SessaoMapper.fromDurationPautaTOToDuration(duracaoTO)
@@ -33,6 +35,22 @@ class SessaoService {
 
    def find(String pautaId) {
       this.repository.findById(UUID.fromString(pautaId)).get()
+   }
+
+   def abrir(String sessaoId) {
+      def sessao = this.repository.findById(UUID.fromString(sessaoId)).get()
+      sessao.status = StatusSessao.ABERTA
+      sessao.pauta.dataInscricao = LocalDateTime.now()
+      this.repository.saveAndFlush(sessao)
+      this.timeoutSessao(sessao)
+   }
+
+   private timeoutSessao(Sessao sessao) {
+      CompletableFuture.runAsync {
+         Thread.sleep(sessao.duracao.toMillis())
+         sessao.setStatus(StatusSessao.FINALIZADA)
+         this.repository.saveAndFlush(sessao)
+      }
    }
 
 }
