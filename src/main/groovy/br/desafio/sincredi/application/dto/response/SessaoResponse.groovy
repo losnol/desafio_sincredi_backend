@@ -1,11 +1,8 @@
-package br.desafio.sincredi.application.dto.request
+package br.desafio.sincredi.application.dto.response
 
-<<<<<<< HEAD
-
-import com.fasterxml.jackson.annotation.JsonProperty
-=======
 import br.desafio.sincredi.application.dto.to.DuracaoPautaTO
->>>>>>> dev
+import br.desafio.sincredi.application.dto.to.VotoTO
+import br.desafio.sincredi.application.utils.enums.StatusSessao
 import groovy.transform.CompileStatic
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
@@ -13,12 +10,11 @@ import groovy.transform.ToString
 @CompileStatic
 @EqualsAndHashCode
 @ToString(includeFields = true, includeNames = true, includePackage = false)
-class CreatePautaRequest {
+class SessaoResponse {
 
-<<<<<<< HEAD
-   @JsonProperty(required = true)
-=======
->>>>>>> dev
-   String nomePauta
+   PautaResponse pauta
+   DuracaoPautaTO duracao
+   Set<VotoTO> votos
+   StatusSessao status
 
 }
