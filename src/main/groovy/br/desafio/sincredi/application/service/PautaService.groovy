@@ -61,4 +61,8 @@ class PautaService {
       this.repository.findDeleted()
    }
 
+   def save(Pauta pauta) {
+      this.repository.saveAndFlush(pauta)
+   }
+
 }

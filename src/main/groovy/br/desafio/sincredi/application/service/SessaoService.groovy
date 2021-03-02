@@ -3,6 +3,7 @@ package br.desafio.sincredi.application.service
 import br.desafio.sincredi.application.dto.to.DuracaoPautaTO
 import br.desafio.sincredi.application.entity.Pauta
 import br.desafio.sincredi.application.entity.Sessao
+import br.desafio.sincredi.application.exception.MissingFieldException
 import br.desafio.sincredi.application.exception.SessaoJaAbertaException
 import br.desafio.sincredi.application.exception.SincrediEntityNotFoundException
 import br.desafio.sincredi.application.mapper.SessaoMapper

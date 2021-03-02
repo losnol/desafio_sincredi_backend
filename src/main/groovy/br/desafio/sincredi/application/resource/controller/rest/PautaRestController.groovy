@@ -31,7 +31,7 @@ class PautaRestController {
 
    @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
    def getPauta(@PathVariable("id") String id) {
-      PautaMapper.toResponse(this.service.get(id).get())
+      PautaMapper.toResponse(this.service.get(id))
    }
 
    @DeleteMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
