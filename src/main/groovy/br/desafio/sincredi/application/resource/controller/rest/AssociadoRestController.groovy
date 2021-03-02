@@ -38,7 +38,7 @@ class AssociadoRestController {
       }.collect(Collectors.toList())
    }
 
-   @PostMapping(path = '/votar/', consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+   @PutMapping(path = '/votar/', consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
    def vote(@RequestBody VotoRequest req) {
       VotoMapper.toResponse(this.service.vote(req.cpf, req.voto == VotoEnum.SIM, req.idPauta))
    }

@@ -13,7 +13,7 @@ import java.time.LocalDateTime
 
 @CompileStatic
 @EqualsAndHashCode(excludes = ['inicio', 'pauta', 'duracao', 'votos', 'status'], callSuper = true)
-@ToString(includeFields = true, includeNames = true, includePackage = false)
+@ToString(includeFields = true, includeNames = true, includePackage = false, excludes = ['votos', 'pauta'])
 @Audited
 @Entity
 class Sessao extends BaseEntity {
@@ -31,7 +31,7 @@ class Sessao extends BaseEntity {
    Duration duracao
 
    @Column
-   @OneToMany(mappedBy = 'sessao')
+   @OneToMany(mappedBy = 'sessao', fetch = FetchType.EAGER)
    Set<Voto> votos = new HashSet<>()
 
    @Column(nullable = false)
