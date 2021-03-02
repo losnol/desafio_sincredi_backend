@@ -1,1 +1,13 @@
-
+spring:
+  jpa:
+    database: postgresql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${POSTGRES_URL:jdbc:postgresql://localhost:5432/}assembleia-db
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:mysecretpasswd}
+server:
+  port: ${APP_PORT:8080}
