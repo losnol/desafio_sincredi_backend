@@ -1,6 +1,10 @@
 package br.desafio.sincredi.application.dto.request
 
 import com.fasterxml.jackson.annotation.JsonFormat
+<<<<<<< HEAD
+import com.fasterxml.jackson.annotation.JsonProperty
+=======
+>>>>>>> dev
 import groovy.transform.CompileStatic
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
