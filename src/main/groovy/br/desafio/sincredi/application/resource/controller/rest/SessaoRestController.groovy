@@ -1,10 +1,11 @@
 package br.desafio.sincredi.application.resource.controller.rest
 
-import br.desafio.sincredi.application.dto.request.CreatePautaRequest
+
 import br.desafio.sincredi.application.dto.request.CreateSessaoRequest
 import br.desafio.sincredi.application.mapper.SessaoMapper
 import br.desafio.sincredi.application.service.SessaoService
 import org.springframework.http.MediaType
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -25,6 +26,12 @@ class SessaoRestController {
    @GetMapping(path = "/{pauta_id}", produces = MediaType.APPLICATION_JSON_VALUE)
    def get(@PathVariable("pauta_id") String pautaId) {
       SessaoMapper.toResponse(this.service.find(pautaId))
+   }
+
+   @PostMapping(path = '/abrir/{sessao_id}', produces = MediaType.APPLICATION_JSON_VALUE)
+   def abrirSessao(@PathVariable('sessao_id') String sessaoId) {
+      this.service.abrir(sessaoId)
+      ResponseEntity.ok().build()
    }
 
 }

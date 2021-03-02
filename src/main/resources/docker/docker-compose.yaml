@@ -4,6 +4,7 @@ services:
   postgres:
     container_name: database
     image: postgres:13.2-alpine
+    hostname: database
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-mysecretpasswd}
@@ -31,6 +32,17 @@ services:
       - postgres
     restart: unless-stopped
 
+  java-app:
+    depends_on:
+      - postgres
+    container_name: java-app
+    image: java-app
+    environment:
+      POSTGRES_URL: jdbc:postgresql://database:5432/
+    ports:
+      - "${JAVA_APP_PORT:-8080}:8080"
+    networks:
+      - postgres
 networks:
   postgres:
     driver: bridge

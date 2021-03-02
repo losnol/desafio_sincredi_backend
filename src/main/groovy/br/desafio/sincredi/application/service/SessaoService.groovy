@@ -53,7 +53,7 @@ class SessaoService {
       def sessao = this.repository.findById(IdUtil.uUIDFromString(sessaoId)).orElseThrow {
          new SincrediEntityNotFoundException('Sessao', sessaoId)
       }
-      if (!StatusSessao.AGUARDANDO)
+      if (sessao.status != StatusSessao.AGUARDANDO)
          throw new SessaoJaAbertaException(sessaoId)
       sessao.status = StatusSessao.ABERTA
       sessao.pauta.dataInscricao = LocalDateTime.now()
@@ -64,9 +64,10 @@ class SessaoService {
    private timeoutSessao(Sessao sessao, Pauta pauta) {
       CompletableFuture.runAsync {
          Thread.sleep(sessao.duracao.toMillis())
-         sessao.setStatus(StatusSessao.FINALIZADA)
-         this.contabilizaVotos(sessao, pauta)
-         this.repository.saveAndFlush(sessao)
+         def updatedSessao = this.repository.findById(sessao.id).get()
+         updatedSessao.setStatus(StatusSessao.FINALIZADA)
+         this.contabilizaVotos(updatedSessao, pauta)
+         this.repository.saveAndFlush(updatedSessao)
       }
    }
 
@@ -78,7 +79,7 @@ class SessaoService {
          if (it.aFavor)
             votosAFavor++
       }
-      pauta.aprovada = votosAFavor && ((total + 1) / votosAFavor) > (votosAFavor / 2)
+      pauta.aprovada = votosAFavor > 0 && ((total + 1) / votosAFavor) > (votosAFavor / 2)
       this.pautaService.save(pauta)
    }
 
